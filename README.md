@@ -96,15 +96,15 @@ package ATS {
   usecase "Consulter les rapports d'agence" as ADUC1
 }
 cr --> UC1
-UC1 --> UC11
-UC1 --> UC12
-UC1 --> UC13
+UC1 --> UC11 : include
+UC1 --> UC12 : include
+UC1 --> UC13 : include
 cr --> UC2
-UC2 --> UC21
-UC2 --> UC22
-UC2 --> UC23
-UC2 --> UC24
-UC2 --> UC25
+UC2 --> UC21 : include
+UC2 --> UC22 : include
+UC2 --> UC23 : include
+UC2 --> UC24 : include
+UC2 --> UC25 : include
 cr --> UC3
 ad --> ADUC1
 @enduml
