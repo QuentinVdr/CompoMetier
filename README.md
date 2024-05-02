@@ -58,7 +58,7 @@ sequenceDiagram
     end
 ```
 
-## Diagram de cas d'utilisation
+## Diagram d'activité
 
 ```mermaid
 flowchart TD
