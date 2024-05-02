@@ -71,3 +71,15 @@ flowchart TD
     E -- Yes --> G[Récupère du dossier candidat]
     G --> C
 ```
+
+## UML
+
+```mermaid
+classDiagram
+    Candidat <|-- SelectionProcess
+    Exchange --|> SelectionProcess
+    PreSelection --|> SelectionProcess
+    Interview --|> SelectionProcess
+    HiringProposal --|> SelectionProcess
+    PreContract --|> SelectionProcess
+```
