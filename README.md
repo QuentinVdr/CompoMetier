@@ -57,3 +57,17 @@ sequenceDiagram
         Front-->>CR: Confirmation de l'enregistrement
     end
 ```
+
+## Diagram de cas d'utilisation
+
+```mermaid
+flowchart TD
+    A[Start] --> B{Si les informations du candidat et\nles documents administratif du candidat existent}
+    B -- No ----> C[End]
+    B -- Yes --> D[Clique sur le bouton pour générer le dossier candidat]
+    D --> E{Si toutes les informations sont correctes}
+    E -- No --> F[Corriger les informations]
+    F --> D
+    E -- Yes --> G[Récupère du dossier candidat]
+    G --> C
+```
