@@ -60,6 +60,8 @@ sequenceDiagram
 
 ## Diagram d'activité
 
+Diagram d'activité pour la génération de dossier candidat
+
 ```mermaid
 flowchart TD
     A[Start] --> B{Si les informations du candidat et\nles documents administratif du candidat existent}
@@ -70,6 +72,42 @@ flowchart TD
     F --> D
     E -- Yes --> G[Récupère du dossier candidat]
     G --> C
+```
+
+## Diagram de cas d'utilisation
+
+```plantuml
+@startuml
+left to right direction
+actor "Chargé de recrutement" as cr
+actor "Directeur d'agence" as ad
+package ATS {
+  usecase "Gérer un candidat" as UC1
+  usecase "Créer un candidat" as UC11
+  usecase "Modifier un candidat" as UC12
+  usecase "Supprimer un candidat" as UC13
+  usecase "Gérer un bloc" as UC2
+  usecase "Gérer un bloc échange" as UC21
+  usecase "Gérer un bloc pre-selection" as UC22
+  usecase "Gérer un bloc entretien" as UC23
+  usecase "Gérer un bloc information contract" as UC24
+  usecase "Gérer un bloc document administratif" as UC25
+  usecase "Faire une recherche de candidat" as UC3
+  usecase "Consulter les rapports d'agence" as ADUC1
+}
+cr --> UC1
+UC1 --> UC11
+UC1 --> UC12
+UC1 --> UC13
+cr --> UC2
+UC2 --> UC21
+UC2 --> UC22
+UC2 --> UC23
+UC2 --> UC24
+UC2 --> UC25
+cr --> UC3
+ad --> ADUC1
+@enduml
 ```
 
 ## UML
