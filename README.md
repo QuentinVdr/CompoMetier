@@ -110,7 +110,7 @@ ad --> ADUC1
 @enduml
 ```
 
-## UML
+## Merise
 
 ```mermaid
 classDiagram
