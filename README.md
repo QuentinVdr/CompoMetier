@@ -37,9 +37,14 @@ sequenceDiagram
     loop Création du dossier candidat
         CR->>+Front: Création du dossier candidat
         Front->>+Back: Création du dossier candidat
-        Back->>Back: Création du dossier candidat a partir du template HTML
-        Back-->>-Front: Envoi du dossier candidat
-        Front-->>-CR: Envoi du dossier candidat
+        critical Création du contrat
+            Back->>Back: Création du dossier candidat a partir du template HTML
+            Back-->>-Front: Envoi du dossier candidat
+            Front-->>-CR: Envoi du dossier candidat
+        Option S'il manque des données
+            Back-->>Front: Renvoyer la liste des informations manquantes
+            Front-->>CR: Renoyer la liste des informations manquantes
+        end
     end
 ```
 
@@ -127,16 +132,4 @@ UC2 <-- UC25 : extend
 cr --> UC3
 ad --> ADUC1
 @enduml
-```
-
-## Merise
-
-```mermaid
-classDiagram
-    Candidat <|-- SelectionProcess
-    Exchange --|> SelectionProcess
-    PreSelection --|> SelectionProcess
-    Interview --|> SelectionProcess
-    HiringProposal --|> SelectionProcess
-    PreContract --|> SelectionProcess
 ```
