@@ -4,6 +4,29 @@ Repo pour les schéma de cours d'atelier métier
 
 ## Diagram de séquence
 
+création d'un candidat et de c'est bloc
+
+```mermaid
+sequenceDiagram
+    actor C as Candidat
+    actor CR as Charger de recrutement
+    participant Front as Application
+    participant Back as Serveur
+
+    loop Pour chaque étape du Process de recrutement
+        CR->>+C: Pris de contact
+        CR->>+Front: Création du block lié à l'étape de recrutement
+        Front->>+Back: Création du block lié à l'étape de recrutement
+        Back-->>-Front: Confirmation de l'enregistrement
+        Front-->>-CR: Confirmation de l'enregistrement
+        C-->>-CR: Réponse
+        CR->>+Front: Enregistre la réponse
+        Front->>+Back: Enregistre la réponse
+        Back-->>-Front: Confirmation de l'enregistrement
+        Front-->>-CR: Confirmation de l'enregistrement
+    end
+```
+
 création d'un dossier candidat
 
 ```mermaid
@@ -20,28 +43,7 @@ sequenceDiagram
             Front-->>CR: Envoi du dossier candidat
         else S'il manque des données
             Back-->>-Front: Renvoyer la liste des informations manquantes
-            Front-->>-CR: Renoyer la liste des informations manquantes
-        end
-    end
-```
-
-création d'un dossier candidat
-
-```mermaid
-sequenceDiagram
-    actor CR as Charger de recrutement
-    participant Front as Application
-    participant Back as Serveur
-    loop Création du dossier candidat
-        CR->>+Front: Création du dossier candidat
-        Front->>+Back: Création du dossier candidat
-        critical Création du contrat
-            Back->>Back: Création du dossier candidat a partir du template HTML
-            Back-->>-Front: Envoi du dossier candidat
-            Front-->>-CR: Envoi du dossier candidat
-        Option S'il manque des données
-            Back-->>Front: Renvoyer la liste des informations manquantes
-            Front-->>CR: Renoyer la liste des informations manquantes
+            Front-->>-CR: Renvoyer la liste des informations manquantes
         end
     end
 ```
