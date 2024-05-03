@@ -108,11 +108,9 @@ left to right direction
 actor "Chargé de recrutement" as cr
 actor "Directeur d'agence" as ad
 package ATS {
-  usecase "Gérer un candidat" as UC1
   usecase "Créer un candidat" as UC11
   usecase "Modifier un candidat" as UC12
   usecase "Supprimer un candidat" as UC13
-  usecase "Gérer un bloc" as UC2
   usecase "Gérer un bloc échange" as UC21
   usecase "Gérer un bloc pre-selection" as UC22
   usecase "Gérer un bloc entretien" as UC23
@@ -121,16 +119,19 @@ package ATS {
   usecase "Faire une recherche de candidat" as UC3
   usecase "Consulter les rapports d'agence" as ADUC1
 }
-cr --> UC1
-UC1 <-- UC11 : extend
-UC1 <-- UC12 : extend
-UC1 <-- UC13 : extend
-cr --> UC2
-UC2 <-- UC21 : extend
-UC2 <-- UC22 : extend
-UC2 <-- UC23 : extend
-UC2 <-- UC24 : extend
-UC2 <-- UC25 : extend
+cr --> UC11
+cr --> UC12
+cr --> UC13
+cr --> UC21
+UC21 ..> UC11 : extend
+cr --> UC22
+UC22 ..> UC11 : extend
+cr --> UC23
+UC23 ..> UC11 : extend
+cr --> UC24
+UC24 ..> UC11 : extend
+cr --> UC25
+UC25 ..> UC11 : extend
 cr --> UC3
 ad --> ADUC1
 @enduml
