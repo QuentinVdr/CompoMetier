@@ -4,6 +4,8 @@ Repo pour les schéma de cours d'atelier métier
 
 ## Diagram de séquence
 
+création d'un candidat et de c'est bloc
+
 ```mermaid
 sequenceDiagram
     actor C as Candidat
@@ -23,7 +25,15 @@ sequenceDiagram
         Back-->>-Front: Confirmation de l'enregistrement
         Front-->>-CR: Confirmation de l'enregistrement
     end
+```
 
+création d'un dossier candidat
+
+```mermaid
+sequenceDiagram
+    actor CR as Charger de recrutement
+    participant Front as Application
+    participant Back as Serveur
     loop Création du dossier candidat
         CR->>+Front: Création du dossier candidat
         Front->>+Back: Création du dossier candidat
@@ -31,7 +41,16 @@ sequenceDiagram
         Back-->>-Front: Envoi du dossier candidat
         Front-->>-CR: Envoi du dossier candidat
     end
+```
 
+Création du contrat
+
+```mermaid
+sequenceDiagram
+    actor C as Candidat
+    actor CR as Charger de recrutement
+    participant Front as Application
+    participant Back as Serveur
     critical Création du contrat
         CR->>+Front: Création du contrat pour embauché le candidat
         Front->>+Back: Vérification des informations du contrat
@@ -96,15 +115,15 @@ package ATS {
   usecase "Consulter les rapports d'agence" as ADUC1
 }
 cr --> UC1
-UC1 --> UC11 : include
-UC1 --> UC12 : include
-UC1 --> UC13 : include
+UC1 <-- UC11 : extend
+UC1 <-- UC12 : extend
+UC1 <-- UC13 : extend
 cr --> UC2
-UC2 --> UC21 : include
-UC2 --> UC22 : include
-UC2 --> UC23 : include
-UC2 --> UC24 : include
-UC2 --> UC25 : include
+UC2 <-- UC21 : extend
+UC2 <-- UC22 : extend
+UC2 <-- UC23 : extend
+UC2 <-- UC24 : extend
+UC2 <-- UC25 : extend
 cr --> UC3
 ad --> ADUC1
 @enduml
